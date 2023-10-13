@@ -78,11 +78,11 @@ public class BillService {
 		return (List<Unit>) this.unitRepo.findAll();
 	}
 
-	public Unit getUnitById(Long id) {
+	public Unit getUnitById(int id) {
 		return this.unitRepo.findById(id).get();
 	}
 
-	public void deletUnitById(Long id) {
+	public void deletUnitById(int id) {
 		Unit unit = this.unitRepo.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid category Id:" + id));
 		unitRepo.delete(unit);

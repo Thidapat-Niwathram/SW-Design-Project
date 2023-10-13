@@ -13,6 +13,18 @@ import jakarta.persistence.Table;
 @Entity 
 @Table(name="unit")
 public class Unit {
+	
+	@Id
+    @Column(name="unit_id")
+ 	private Integer unit_id;
+	@Column(name="unit_price")
+ 	private Integer unit_price;
+	@Column(name="unit_desc")
+ 	private Integer unit_desc;
+	@OneToMany(targetEntity=Bill.class, mappedBy="unit",
+    		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Bill> bill_unit;
+	
 	public Integer getUnit_id() {
 		return unit_id;
 	}
@@ -37,14 +49,4 @@ public class Unit {
 	public void setBill_unit(List<Bill> bill_unit) {
 		this.bill_unit = bill_unit;
 	}
-	@Id
-    @Column(name="unit_id")
- 	private Integer unit_id;
-	@Column(name="unit_price")
- 	private Integer unit_price;
-	@Column(name="unit_desc")
- 	private Integer unit_desc;
-	@OneToMany(targetEntity=Bill.class, mappedBy="unit",
-    		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Bill> bill_unit;
 }
