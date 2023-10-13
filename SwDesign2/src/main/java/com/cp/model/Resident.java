@@ -1,5 +1,5 @@
 package com.cp.model;
 
-public class District {
+public class Resident {
 
 }
