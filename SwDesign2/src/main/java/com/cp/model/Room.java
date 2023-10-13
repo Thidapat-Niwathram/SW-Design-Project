@@ -22,7 +22,7 @@ public class Room {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="room_id")
- 	private Integer room_id;
+ 	private String room_id;
 	
 	@Column(name="room_status")
 	private String room_status;
@@ -35,15 +35,29 @@ public class Room {
 	@JoinColumn(name="type_id")
 	private Type type;
 	
+	@JsonIgnore
 	@OneToMany(targetEntity=Lease.class, mappedBy="room",
     		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Lease> lease;
 
-	public Integer getRoom_id() {
+	
+	public Room() {
+		super();
+	}
+	public Room(String room_id, String room_desc, String room_status, Type type, List<Lease> lease) {
+		super();
+		this.room_id = room_id;
+		this.room_status = room_status;
+		this.room_desc = room_desc;
+		this.type = type;
+		this.lease = lease;
+	}
+
+	public String getRoom_id() {
 		return room_id;
 	}
 
-	public void setRoom_id(Integer room_id) {
+	public void setRoom_id(String room_id) {
 		this.room_id = room_id;
 	}
 
@@ -79,14 +93,7 @@ public class Room {
 		this.lease = lease;
 	}
 
-	public Room(Integer room_id, String room_status, String room_desc, Type type, List<Lease> lease) {
-		super();
-		this.room_id = room_id;
-		this.room_status = room_status;
-		this.room_desc = room_desc;
-		this.type = type;
-		this.lease = lease;
-	}
+	
 
 	
 }

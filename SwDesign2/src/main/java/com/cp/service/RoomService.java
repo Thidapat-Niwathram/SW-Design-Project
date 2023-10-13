@@ -3,10 +3,12 @@ package com.cp.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cp.model.Room;
 import com.cp.repository.RoomRepository;
 
+@Service
 public class RoomService {
 
 	private RoomRepository roomRepository;

@@ -27,6 +27,10 @@ public class Geographies {
     private List<Provinces> provinces;
 
 	
+	public Geographies() {
+		super();
+	}
+
 	public Geographies(Integer id, String name, List<Provinces> provinces) {
 		super();
 		this.id = id;

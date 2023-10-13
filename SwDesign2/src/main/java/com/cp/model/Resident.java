@@ -4,6 +4,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,13 +12,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="resident")
 public class Resident {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_card")
-	private Integer id_card;
+	private String id_card;
 	
 	@Column(name="first_name")
 	private String first_name;
@@ -39,15 +43,34 @@ public class Resident {
 	@JoinColumn(name="districts_id")
     private Districts districts;
 	
+	@JsonIgnore
 	@OneToMany(targetEntity=Lease.class, mappedBy="resident",
     		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Lease> lease;
 
-	public Integer getId_card() {
+	
+	public Resident() {
+		super();
+	}
+
+	public Resident(String id_card, String first_name, String last_name, String email, String phone, String address,
+			Districts districts, List<Lease> lease) {
+		super();
+		this.id_card = id_card;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.districts = districts;
+		this.lease = lease;
+	}
+
+	public String getId_card() {
 		return id_card;
 	}
 
-	public void setId_card(Integer id_card) {
+	public void setId_card(String id_card) {
 		this.id_card = id_card;
 	}
 
@@ -104,19 +127,6 @@ public class Resident {
 	}
 
 	public void setLease(List<Lease> lease) {
-		this.lease = lease;
-	}
-
-	public Resident(Integer id_card, String first_name, String last_name, String email, String phone, String address,
-			Districts districts, List<Lease> lease) {
-		super();
-		this.id_card = id_card;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.email = email;
-		this.phone = phone;
-		this.address = address;
-		this.districts = districts;
 		this.lease = lease;
 	}
 

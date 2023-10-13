@@ -3,6 +3,7 @@ package com.cp.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cp.model.Bill;
 import com.cp.model.Month;
@@ -10,7 +11,9 @@ import com.cp.model.Unit;
 import com.cp.repository.BillRepository;
 import com.cp.repository.MonthRepository;
 import com.cp.repository.UnitRepository;
+import java.util.Date;
 
+@Service
 public class BillService {
 	private BillRepository billRepo;
 	private MonthRepository monthRepo;
@@ -51,11 +54,11 @@ public class BillService {
 		return (List<Month>) this.monthRepo.findAll();
 	}
 
-	public Month getMonthById(Long id) {
+	public Month getMonthById(Date id) {
 		return this.monthRepo.findById(id).get();
 	}
 
-	public void deletMonthById(Long id) {
+	public void deletMonthById(Date id) {
 		Month month = this.monthRepo.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid category Id:" + id));
 		monthRepo.delete(month);
