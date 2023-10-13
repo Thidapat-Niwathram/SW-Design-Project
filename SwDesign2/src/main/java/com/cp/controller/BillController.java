@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -14,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+
+
 import com.cp.model.Bill;
 import com.cp.service.BillService;
 
 @Controller
 public class BillController {
+	
+	@Autowired
 	private BillService billService;
 
 	@Autowired
@@ -32,6 +37,7 @@ public class BillController {
 //		  model.addAttribute("categoryList",categoryList);
 //		  return "categoryList";
 //	  }
+
 	@RequestMapping("/bill")
 	public String getBillList(Model model) {
 		List<Bill> billList = (List<Bill>) billService.getBillById(3);
@@ -44,6 +50,7 @@ public class BillController {
 		Bill bill = billService.getBillById(id);
 		billService.deleteBill(bill);
 		return "redirect:/show_bill";
+
 	}
 
 	@PostMapping("/update_bill/{id}")

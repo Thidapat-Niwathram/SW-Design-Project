@@ -3,11 +3,13 @@ package com.cp.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cp.model.Resident;
 import com.cp.repository.LeaseRepository;
 import com.cp.repository.ResidentRepository;
 
+@Service
 public class ResidentService {
 	private ResidentRepository residentRepository;
 	
@@ -22,7 +24,7 @@ public class ResidentService {
 	}
 	
 	//get All id
-	public List<Resident> getAllResidentRepository(){
+	public List<Resident> getAllResident(){
 		return (List<Resident>) this.residentRepository.findAll();
 		}
 	//get by id

@@ -27,6 +27,7 @@ public class Provinces {
 	private String name_th;
 	private String name_en;
 	
+	@JsonIgnore
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "geography_id")
 	private Geographies geographies;
@@ -35,6 +36,10 @@ public class Provinces {
 	@OneToMany(targetEntity=Amphures.class, mappedBy="provinces",
     		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Amphures> amphures;
+
+	public Provinces() {
+		super();
+	}
 
 	public Provinces(Integer id, String code, String name_th, String name_en, Geographies geographies,
 			List<Amphures> amphures) {

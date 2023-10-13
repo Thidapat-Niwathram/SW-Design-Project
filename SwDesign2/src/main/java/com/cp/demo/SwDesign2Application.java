@@ -7,11 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
-//@ComponentScan
+
+@SpringBootApplication
 @EntityScan(basePackages = {"com.cp.model"})
 @EnableJpaRepositories(basePackages = "com.cp.repository")
-@ComponentScan(basePackages={"com.cp.demo","com.cp.model","com.cp.repository","com.cp.controller","com.cp.service"})
-@SpringBootApplication
+@ComponentScan(basePackages={"com.cp.demo","com.cp.model","com.cp.repository",
+		"com.cp.controller", "com.cp.service"})
 public class SwDesign2Application {
 
 	public static void main(String[] args) {

@@ -1,7 +1,7 @@
 package com.cp.model;
 
 import java.util.List;
-
+import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -26,6 +26,7 @@ public class Lease {
     @Column(name="lease_id")
      private Integer lease_id;
 
+	@JsonIgnore
     @OneToMany(targetEntity=Bill.class, mappedBy="lease",
             cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Bill> bill;
@@ -41,10 +42,10 @@ public class Lease {
     private Room room;
 
     @Column(name="start_date_lease")
-    private long start_date_lease;
+    private Date start_date_lease;
 
     @Column(name="end_date_lease")
-    private long end_date_lease;
+    private Date end_date_lease;
 
     @Column(name="deposit")
      private Integer deposit;
@@ -60,6 +61,27 @@ public class Lease {
 
     @Column(name="member")
      private Integer member;
+
+    
+	public Lease() {
+		super();
+	}
+
+	public Lease(Integer lease_id, List<Bill> bill, Resident resident, Room room, Date start_date_lease,
+			Date end_date_lease, Integer deposit, Integer discount, String pet, String lease_status, Integer member) {
+		super();
+		this.lease_id = lease_id;
+		this.bill = bill;
+		this.resident = resident;
+		this.room = room;
+		this.start_date_lease = start_date_lease;
+		this.end_date_lease = end_date_lease;
+		this.deposit = deposit;
+		this.discount = discount;
+		this.pet = pet;
+		this.lease_status = lease_status;
+		this.member = member;
+	}
 
 	public Integer getLease_id() {
 		return lease_id;
@@ -93,19 +115,19 @@ public class Lease {
 		this.room = room;
 	}
 
-	public long getStart_date_lease() {
+	public Date getStart_date_lease() {
 		return start_date_lease;
 	}
 
-	public void setStart_date_lease(long start_date_lease) {
+	public void setStart_date_lease(Date start_date_lease) {
 		this.start_date_lease = start_date_lease;
 	}
 
-	public long getEnd_date_lease() {
+	public Date getEnd_date_lease() {
 		return end_date_lease;
 	}
 
-	public void setEnd_date_lease(long end_date_lease) {
+	public void setEnd_date_lease(Date end_date_lease) {
 		this.end_date_lease = end_date_lease;
 	}
 
@@ -149,23 +171,5 @@ public class Lease {
 		this.member = member;
 	}
 
-	public Lease(Integer lease_id, List<Bill> bill, Resident resident, Room room, long start_date_lease,
-			long end_date_lease, Integer deposit, Integer discount, String pet, String lease_status, Integer member) {
-		super();
-		this.lease_id = lease_id;
-		this.bill = bill;
-		this.resident = resident;
-		this.room = room;
-		this.start_date_lease = start_date_lease;
-		this.end_date_lease = end_date_lease;
-		this.deposit = deposit;
-		this.discount = discount;
-		this.pet = pet;
-		this.lease_status = lease_status;
-		this.member = member;
-	}
 	
-	
-	
-
 }

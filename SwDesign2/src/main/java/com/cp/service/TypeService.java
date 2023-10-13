@@ -3,10 +3,12 @@ package com.cp.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cp.model.Type;
 import com.cp.repository.TypeRepository;
 
+@Service
 public class TypeService {
 	private TypeRepository typeRepository;
 
