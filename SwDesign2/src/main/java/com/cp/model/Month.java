@@ -13,28 +13,29 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
+import java.util.Date;
 @Entity 
 @Table(name="month")
 public class Month {
 	@Id
     @Column(name="pay_date")
- 	private Long pay_date;
+	private Date pay_date;
 	@Column(name="last_pay_date")
- 	private Long last_pay_date;
+ 	private Date last_pay_date;
 	@OneToMany(targetEntity=Bill.class, mappedBy="month",
     		cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Bill> bill_month;
-	public Long getPay_date() {
+	
+	public Date getPay_date() {
 		return pay_date;
 	}
-	public void setPay_date(Long pay_date) {
+	public void setPay_date(Date pay_date) {
 		this.pay_date = pay_date;
 	}
-	public Long getLast_pay_date() {
+	public Date getLast_pay_date() {
 		return last_pay_date;
 	}
-	public void setLast_pay_date(Long last_pay_date) {
+	public void setLast_pay_date(Date last_pay_date) {
 		this.last_pay_date = last_pay_date;
 	}
 	public List<Bill> getBill_month() {

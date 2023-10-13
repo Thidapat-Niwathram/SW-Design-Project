@@ -44,13 +44,13 @@ public class Bill {
 	/* FK */
 	@ManyToOne
 	@JoinColumn(name="pay_date", nullable=false)
-    private Month pay_date;
+    private Month pay;
 	@ManyToOne
 	@JoinColumn(name="lease_id", nullable=false)
-	private Lease lease_id;
+	private Lease lease;
 	@ManyToOne
 	@JoinColumn(name="unit_id", nullable=false)
-	private Unit unit_id;
+	private Unit unit;
 	public int getBill_id() {
 		return bill_id;
 	}
@@ -117,23 +117,23 @@ public class Bill {
 	public void setLaundry(int laundry) {
 		this.laundry = laundry;
 	}
-	public Month getPay_date() {
-		return pay_date;
+	public Month getPay() {
+		return pay;
 	}
-	public void setPay_date(Month pay_date) {
-		this.pay_date = pay_date;
+	public void setPay(Month pay) {
+		this.pay = pay;
 	}
-	public Lease getLease_id() {
-		return lease_id;
+	public Lease getLease() {
+		return lease;
 	}
-	public void setLease_id(Lease lease_id) {
-		this.lease_id = lease_id;
+	public void setLease(Lease lease) {
+		this.lease = lease;
 	}
-	public Unit getUnit_id() {
-		return unit_id;
+	public Unit getUnit() {
+		return unit;
 	}
-	public void setUnit_id(Unit unit_id) {
-		this.unit_id = unit_id;
+	public void setUnit(Unit unit) {
+		this.unit = unit;
 	}
 
 	
