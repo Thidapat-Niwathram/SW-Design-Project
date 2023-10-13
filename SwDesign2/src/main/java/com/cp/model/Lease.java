@@ -2,20 +2,63 @@ package com.cp.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity 
 @Table(name="lease")
 public class Lease {
+
 	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="lease_id")
- 	private Integer lease_id;
+     private Integer lease_id;
+
+    @OneToMany(targetEntity=Bill.class, mappedBy="lease",
+            cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Bill> bill;
+
+    @JsonIgnore 
+    @ManyToOne(optional=false)
+    @JoinColumn(name="id_card")
+    private Resident resident;
+
+    @JsonIgnore 
+    @ManyToOne(optional=false)
+    @JoinColumn(name="room_id")
+    private Room room;
+
+    @Column(name="start_date_lease")
+    private long start_date_lease;
+
+    @Column(name="end_date_lease")
+    private long end_date_lease;
+
+    @Column(name="deposit")
+     private Integer deposit;
+
+    @Column(name="discount")
+     private Integer discount;
+
+    @Column(name="pet")
+     private String pet;
+
+    @Column(name="lease_status")
+     private String lease_status;
+
+    @Column(name="member")
+     private Integer member;
 
 	public Integer getLease_id() {
 		return lease_id;
