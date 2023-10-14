@@ -9,22 +9,12 @@ import com.cp.service.LeaseService;
 
 @Controller
 public class PageController {
-//	
-//	@Autowired
-//	private LeaseService leaseService;
-//
-//	@Autowired
-//	public void setLeaseService(LeaseService leaseService) {
-//		this.leaseService = leaseService;
+	
+//	@GetMapping("/")
+//	public String getIndex() {
+//		return "index";
 //	}
 	
-	//done
-	@GetMapping("/")
-	public String getIndex() {
-		return "index";
-	}
-	
-	//done
 	@GetMapping("/dashboard-owner")
 	public String getDashboardOwner() {
 		return "dashboard-owner";
@@ -35,7 +25,6 @@ public class PageController {
 		return "dashboard-resident";
 	}
 	
-	//done
 	@GetMapping("/residents-owner")
 	public String getResidents() {
 		return "residents-owner";
@@ -55,6 +44,5 @@ public class PageController {
 	public String getLeaseOwner() {
 		return "leases-owner";
 	}
-	
-	
+		
 }

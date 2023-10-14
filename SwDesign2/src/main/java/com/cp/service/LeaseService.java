@@ -22,6 +22,7 @@ public class LeaseService {
 	public void setLeaseRepository(LeaseRepository leaseRepository) {
 		this.leaseRepository = leaseRepository;
 	}
+	
 	@Autowired
 	public LeaseService(LeaseRepository leaseRepository, ResidentRepository residentRepository,
 			RoomRepository roomRepository, TypeRepository typeRepository) {
@@ -30,9 +31,10 @@ public class LeaseService {
 	}
 	
 	//get all
-	public List<Lease> getAllLeaseRepository(){
+	public List<Lease> getAllLease(){
 		return (List<Lease>) this.leaseRepository.findAll();
-		}
+	}
+	
 	//get by id
 	public Lease getLeaseById(Integer id) {
 		return this.leaseRepository.findById(id).get();
@@ -44,4 +46,6 @@ public class LeaseService {
 				.orElseThrow(() -> new IllegalArgumentException("Invalid Lease Id:" + id));
 		leaseRepository.delete(lease);
 	}
+	
+	
 }

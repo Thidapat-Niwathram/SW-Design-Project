@@ -17,13 +17,12 @@
 
     <div class="col left">
     </div>
-    <form action="" method="post">
+    <form action="/" method="post" th:object="${loginForm}">
         <div class="col right">
             <div class="center">
                 <h1>Welcome to Friendly Place</h1>
-                <input type="text" name="username" id="username" placeholder="Username">
-                <input type="text" name="password" id="password" placeholder="Password">
-                <!-- <input type="button" value="LOGIN" class="button"> -->
+                <input type="text" th:name="username" id="room_id" th:value="${username}" placeholder="Username">
+                <input type="text" th:name="password" id="id_card" th:value="${password}" placeholder="Password">
                 <button class="button" type="submit">LOGIN</button>
             </div>
         </div>
