@@ -1,5 +1,6 @@
 package com.cp.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class BillService {
 	private MonthRepository monthRepo;
 	private UnitRepository unitRepo;
 
+	/*Bill*/
 	@Autowired
 	public void setBillRepository(BillRepository billRepository) {
 		this.billRepo = billRepository;
@@ -43,6 +45,9 @@ public class BillService {
 	public void saveBill(Bill bill) {
 		this.billRepo.save(bill);
 	}
+//	public int getStartUnit() {
+//		return this.billRepo.
+//	}
 	/* Month */
 
 	@Autowired

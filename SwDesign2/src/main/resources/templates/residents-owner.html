@@ -64,13 +64,13 @@
             </thead>
             <form action="" method="post">
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
+                    <tr th:each="res : ${lease}">
+                        <td th:text="${res.room.room_id}"></td>
+                        <td th:text="${res.resident.first_name}"></td>
+                        <td th:text="${res.resident.last_name}"></td>
+                        <td th:text="${res.room.room_status}"></td>
+                        <td th:text="${res.start_date_lease}"></td>
+                        <td th:text="${res.end_date_lease}"></td>
                         <td>
                             <input class="th" type="submit" name="action" value="แก้ไข" />
                             <input class="th" type="submit" name="action" value="ลบ" />

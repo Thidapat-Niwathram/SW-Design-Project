@@ -54,6 +54,7 @@ public class Bill {
 	
 	@Column(name="laundry")
 	private int laundry;
+
 	
 	/* FK */
 	@JsonIgnore
@@ -93,6 +94,7 @@ public class Bill {
 		this.lease = lease;
 		this.unit = unit;
 	}
+
 	public int getBill_id() {
 		return bill_id;
 	}
@@ -160,6 +162,7 @@ public class Bill {
 	public void setLaundry(int laundry) {
 		this.laundry = laundry;
 	}
+
 	
 	public Month getMonth() {
 		return month;

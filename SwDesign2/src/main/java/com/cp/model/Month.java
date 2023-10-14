@@ -14,17 +14,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
+import java.util.Date;
 @Entity 
 @Table(name="month")
 public class Month {
 	@Id
     @Column(name="pay_date")
- 	private Date pay_date;
-	
+	private Date pay_date;
 	@Column(name="last_pay_date")
  	private Date last_pay_date;
-	
 	@JsonIgnore
 	@OneToMany(targetEntity=Bill.class, mappedBy="month",
     		cascade=CascadeType.ALL, fetch = FetchType.LAZY)

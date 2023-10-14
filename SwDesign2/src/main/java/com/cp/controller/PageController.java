@@ -25,10 +25,11 @@ public class PageController {
 		return "dashboard-resident";
 	}
 	
-	@GetMapping("/residents-owner")
-	public String getResidents() {
-		return "residents-owner";
-	}
+	//done
+//	@GetMapping("/residents-owner")
+//	public String getResidents() {
+//		return "residents-owner";
+//	}
 	
 	@GetMapping("/room-status-owner")
 	public String getRoomStatus() {

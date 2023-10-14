@@ -1,0 +1,89 @@
+<style type="text/css">
+	.tg {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+	.tg td {
+		border-color: black;
+		border-style: solid;
+		border-width: 1px;
+		font-family: Arial, sans-serif;
+		font-size: 14px;
+		overflow: hidden;
+		padding: 10px 5px;
+		word-break: normal;
+	}
+
+	.tg th {
+		border-color: black;
+		border-style: solid;
+		border-width: 1px;
+		font-family: Arial, sans-serif;
+		font-size: 14px;
+		font-weight: normal;
+		overflow: hidden;
+		padding: 10px 5px;
+		word-break: normal;
+	}
+
+	.tg .tg-0lax {
+		text-align: left;
+		vertical-align: top
+	}
+</style>
+<table class="tg">
+	<thead>
+		<tr>
+			<th class="tg-0lax">รายการ</th>
+			<th class="tg-0lax">หน่วยก่อนหน้า</th>
+			<th class="tg-0lax">หน่วยปัจจุบัน</th>
+			<th class="tg-0lax">หน่วยละ</th>
+			<th class="tg-0lax">รวม</th>
+		</tr>
+	</thead>
+	<tbody >
+		<tr>
+			<td class="tg-0lax">ค่าไฟ</td>
+			<td class="tg-0lax" th:text="${bill.start_unit}"></td>
+			<td class="tg-0lax" th:text="${bill.end_unit}"></td>
+			<td class="tg-0lax" th:text="${bill.unit.unit_price}"></td>
+			<td class="tg-0lax" th:text="${bill.electric}"></td>
+		</tr>
+		<tr>
+			<td class="tg-0lax">ค่าน้ำ</td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax" th:text="${bill.water}"></td>
+		</tr>
+		<tr>
+			<td class="tg-0lax">ค่าเช่าตู้เย็น</td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+		</tr>
+		<tr>
+			<td class="tg-0lax">ค่าเช่าโทรทัศน์</td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+		</tr>
+		<tr>
+			<td class="tg-0lax">ค่าซักรีด</td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+		</tr>
+		<tr>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax"></td>
+		</tr>
+		</tbody>
+</table>
