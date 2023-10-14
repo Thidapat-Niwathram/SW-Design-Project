@@ -73,7 +73,9 @@
                         <td th:text="${res.end_date_lease}"></td>
                         <td>
                             <input class="th" type="submit" name="action" value="แก้ไข" />
-                            <input class="th" type="submit" name="action" value="ลบ" />
+                          <!--  <input th:href="@{/delete_resident/{id}(id=${res.lease_id})}" class="th" type="submit" name="action" value="ลบ" />
+                        -->
+                        	<a th:href="@{'/delete_resident/' + ${res.lease_id}}" class="btn btn-danger">ลบ</a>
                         </td>
                     </tr>
                 </tbody>
