@@ -52,15 +52,17 @@
         <h2 class="dashboard-text th">สัญญาการเข้าพัก</h2>
         <table>
             <thead class="th">
+                <td>เลขที่สัญญา</td>
                 <td>เลขห้อง</td>
                 <td>วันที่เริ่มสัญญา</td>
-                <td>วันสิ้นสุดสัญญา</td>
+                <td>วันสิ้นสุดสัญญา</td>         
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
+                <tr th:each="l:${lease}">
+					<td th:text="${l.lease_id}"></td>
+                    <td th:text="${l.room.room_id}"></td>
+                    <td th:text="${#dates.format(l.start_date_lease, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${#dates.format(l.end_date_lease, 'dd-MM-yyyy')}"></td>
                 </tr>
             </tbody>
         </table>

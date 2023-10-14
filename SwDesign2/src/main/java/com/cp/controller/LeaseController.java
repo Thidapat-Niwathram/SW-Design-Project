@@ -21,7 +21,14 @@ public class LeaseController {
 	public void setLeaseRepository(LeaseService leaseService) {
 		this.leaseService = leaseService;
 	}
+	
+	@GetMapping("/residents")
+    public String showAllResidents(Model model) {
+        List<Lease> lease = leaseService.getAllLease();
+        model.addAttribute("lease", lease);
+        return "residents-owner";
 
+<<<<<<< HEAD
 	@GetMapping("/residents-owner")
 	public String showAllLease(Model model) {
 		List<Lease> lease = leaseService.getAllLeaseRepository();
@@ -36,4 +43,17 @@ public class LeaseController {
 		leaseService.deleteLeaseById(id);
 		return "redirect:/residents-owner";
 	}
+=======
+    }
+	
+	@GetMapping("/leases")
+	public String showAllLease(Model model) {
+		List<Lease> lease = leaseService.getAllLease();
+		model.addAttribute("lease", lease);
+		return "leases-owner";
+		
+	}
+
+	
+>>>>>>> b0aa2c9d91aa771d6ee972880574514e65d41864
 }
