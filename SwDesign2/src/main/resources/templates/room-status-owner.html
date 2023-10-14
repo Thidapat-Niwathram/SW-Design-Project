@@ -57,10 +57,10 @@
                 <td>สถานะ</td>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
+                <tr th:each="r:${room}">
+                    <td th:text="${r.room_id}"></td>
+                    <td th:text="${r.type.type_id}"></td>
+                    <td th:text="${r.room_status}"></td>
                 </tr>
             </tbody>
         </table>

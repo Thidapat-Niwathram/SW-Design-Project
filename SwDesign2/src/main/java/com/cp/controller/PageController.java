@@ -31,19 +31,19 @@ public class PageController {
 //		return "residents-owner";
 //	}
 	
-	@GetMapping("/room-status-owner")
-	public String getRoomStatus() {
-		return "room-status-owner";
-	}
+//	@GetMapping("/room-status-owner")
+//	public String getRoomStatus() {
+//		return "room-status-owner";
+//	}
 	
 	@GetMapping("/add-resident-owner")
 	public String getAddResident() {
 		return "add-resident-owner";
 	}
 	
-	@GetMapping("/leases-owner")
-	public String getLeaseOwner() {
-		return "leases-owner";
-	}
+//	@GetMapping("/leases-owner")
+//	public String getLeaseOwner() {
+//		return "leases-owner";
+//	}
 		
 }

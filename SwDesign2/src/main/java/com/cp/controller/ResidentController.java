@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cp.model.Bill;
+import com.cp.model.Lease;
 import com.cp.model.Resident;
 import com.cp.service.ResidentService;
 
@@ -30,6 +31,8 @@ public class ResidentController {
 		List<Resident> resi = residentService.getAllResident();
 		return resi;
 	}
+	
+	
 	
 //	@GetMapping("/resident-owner")
 //	public String getResidentList(Model model) {
