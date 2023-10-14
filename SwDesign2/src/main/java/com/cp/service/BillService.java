@@ -14,12 +14,13 @@ import com.cp.repository.MonthRepository;
 import com.cp.repository.UnitRepository;
 import java.util.Date;
 
-
+@Service
 public class BillService {
 	private BillRepository billRepo;
 	private MonthRepository monthRepo;
 	private UnitRepository unitRepo;
 
+	/*Bill*/
 	@Autowired
 	public void setBillRepository(BillRepository billRepository) {
 		this.billRepo = billRepository;
@@ -44,6 +45,9 @@ public class BillService {
 	public void saveBill(Bill bill) {
 		this.billRepo.save(bill);
 	}
+//	public int getStartUnit() {
+//		return this.billRepo.
+//	}
 	/* Month */
 
 	@Autowired

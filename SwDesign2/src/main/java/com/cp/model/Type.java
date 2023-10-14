@@ -13,7 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-<<<<<<< HEAD
+
 @Entity 
 @Table(name="type")
 public class Type {

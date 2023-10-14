@@ -54,12 +54,12 @@ public class Bill {
 	
 	@Column(name="laundry")
 	private int laundry;
+
 	
 	/* FK */
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="pay_date", nullable=false)
-
     private Month month;
 	
 	@JsonIgnore
