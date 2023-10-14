@@ -1,33 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	
-</head>
 
 <body>
-	<table class="center" border="1">
-		<thead class="th">
-			<td>รายการ</td>
-			<td>หน่วยก่อนหน้า</td>
-			<td>หน่วยปัจจุบัน</td>
-			<td>หน่วยละ</td>
-			<th>รวม</th>
-		</thead>
-		<tbody>
-			<tr th:each="bill : ${bill}">
-				
-				<td th:text="${bill.start_unit}"></td>
-				<td th:text="${bill.end_unit}"></td>
-				<td th:text="${bill.unit.unit_price}"></td>
-				<td th:text="${bill.electric}"></td>
-				
-				<!--
-				<td th:text="${bill.total}"></td>
-				-->
-			</tr>
-		</tbody>
-	</table><br />
 
 <html xmln:th="http://www.thymeleaf.org">
 

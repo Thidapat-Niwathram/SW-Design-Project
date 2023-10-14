@@ -30,19 +30,19 @@ public class BillController {
 	public void setBillService(BillService billService) {
 		this.billService = billService;
 	}
-//	@GetMapping("/")
+//	@GetMapping("/bill")
 ////	@RequestMapping("/")
 //	public String getBillList(Model model) {
 //		List<Bill> billList = (List<Bill>) billService.getBillAll();
 //		model.addAttribute("bill", billList);     
-//		return "bill";
+//		return "testBill";
 //	}
-	
-	@GetMapping("/")
+//	
+	@GetMapping("/bill")
 	public String getBillById(Model model) {
-		List<Bill> billList = (List<Bill>) billService.getBillById(50);
+		Bill billList = billService.getBillById(50);
 		model.addAttribute("bill", billList);     
-		return "bill";
+		return "testBill";
 	}
 	@RequestMapping("/bill_list_json") 
 	@ResponseBody
