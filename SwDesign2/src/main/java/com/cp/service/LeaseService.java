@@ -46,6 +46,11 @@ public class LeaseService {
 				.orElseThrow(() -> new IllegalArgumentException("Invalid Lease Id:" + id));
 		leaseRepository.delete(lease);
 	}
-	
-	
+	public void saveLeaseById(Lease l) {
+		this.leaseRepository.save(l);
+	}
+	public void saveLease(Lease l) {
+		this.leaseRepository.save(l);
+	}
+
 }

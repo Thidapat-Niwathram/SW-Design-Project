@@ -1,6 +1,9 @@
 package com.cp.model;
 
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,18 +35,20 @@ public class Lease {
     private List<Bill> bill;
 
     @JsonIgnore 
-    @ManyToOne(optional=false)
+    @ManyToOne
+//    (optional=false)
     @JoinColumn(name="id_card")
     private Resident resident;
 
     @JsonIgnore 
-    @ManyToOne(optional=false)
+    @ManyToOne
+//    (optional=false)
     @JoinColumn(name="room_id")
     private Room room;
 
     @Column(name="start_date_lease")
     private Date start_date_lease;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name="end_date_lease")
     private Date end_date_lease;
 
@@ -67,6 +72,23 @@ public class Lease {
 		super();
 	}
 
+	
+	public Lease(Resident resident, Room room, Date start_date_lease, Date end_date_lease, Integer deposit,
+			Integer discount, String pet, Integer member, String lease_status) {
+		super();
+		this.resident = resident;
+		this.room = room;
+		this.start_date_lease = start_date_lease;
+		this.end_date_lease = end_date_lease;
+		this.deposit = deposit;
+		this.discount = discount;
+		this.pet = pet;
+		this.member = member;
+		this.lease_status = lease_status;
+	}
+
+
+	
 	public Lease(Integer lease_id, List<Bill> bill, Resident resident, Room room, Date start_date_lease,
 			Date end_date_lease, Integer deposit, Integer discount, String pet, String lease_status, Integer member) {
 		super();

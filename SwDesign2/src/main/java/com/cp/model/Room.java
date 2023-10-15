@@ -31,7 +31,8 @@ public class Room {
 	private String room_desc;
 	
 	@JsonIgnore
-	@ManyToOne(optional=false)
+	@ManyToOne
+//	(optional=false)
 	@JoinColumn(name="type_id")
 	private Type type;
 	
