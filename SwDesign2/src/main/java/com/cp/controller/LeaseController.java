@@ -26,13 +26,30 @@ public class LeaseController {
         return "residents-owner";
 
     }
-	
+
 	@GetMapping("/leases")
-	public String showAllLease(Model model) {
-		List<Lease> lease = leaseService.getAllLease();
-		model.addAttribute("lease", lease);
+    public String showAllLease(Model model) {
+        List<Lease> lease = leaseService.getAllLease();
+        model.addAttribute("leases", lease);
+        return "leases-owner";
+
+    }
+	
+	@GetMapping("/add-lease")
+	public String addLease() {
+		return "add-lease-owner";
+	}
+	
+	@GetMapping("/edit-lease")
+	public String editLease(Model model) {
+		//get lease by id from leases page and show that value in edit page
+		return "edit-lease-owner";
+	}
+	
+	@GetMapping("/delete-lease")
+	public String deleteLeaseById(Model model) {
+		//delete by id
 		return "leases-owner";
-		
 	}
 
 	

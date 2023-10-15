@@ -12,7 +12,6 @@
 
 	<link th:href="@{/styles/css/table.css}" rel="stylesheet" />
 	<link th:href="@{/styles/css/dashboard.css}" rel="stylesheet" />
-	<link th:href="@{/styles/css/form-lr.css}" rel="stylesheet" />
 
     <!-- font thai -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +21,6 @@
 </head>
 
 <body>
-
     <!-- nav -->
     <nav class="navbar navbar-light" style="background-color: #D9D9D9;">
         <div class="container-fluid">
@@ -44,42 +42,43 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrum">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a th:href="@{/dashboard-owner}">Admin Dashboard</a></li>
-            <li class="breadcrumb-item th"><a th:href="@{/residents}">รายชื่อผู้เข้าพัก</a></li>
-            <li class="breadcrumb-item active th" aria-current="page">เพิ่มข้อมูลผู้เข้าพัก</li>
+            <li class="breadcrumb-item active th" aria-current="page">รายละเอียดการจ่ายบิล</li>
         </ol>
     </nav>
     <!-- breadcrum -->
 
     <div class="container">
-        <h2 class="dashboard-text th">เพิ่มข้อมูลผู้เข้าพัก</h2>
-        <form action="" method="post">
-            <div class="content">
-                <div class="col right">
-                    <input type="text" name="id_card" id="id_card" placeholder="รหัสบัตรประชาชน">
-                    <input type="text" name="first_name" id="first_name" placeholder="ชื่อ">
-                    <input type="text" name="last_name" id="last_name" placeholder="นามสกุล">
-                    <input type="text" name="email" id="email" placeholder="อีเมล">
-                    <input type="text" name="phone" id="phone" placeholder="เบอร์โทร">
-                </div>
-                <div class="col left">
-                    <input type="text" name="address" id="address" placeholder="ที่อยู่">
-                    <select id="provinces" name="provinces">
-                        <option value="province1">province1</option>
-                    </select>
-                    <select id="amphures" name="amphures">
-                        <option value="amphure1">amphure1</option>
-                    </select>
-                    <select id="districts" name="districts">
-                        <option value="district1">district1</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col">
-                <button class="button" type="submit">Add</button>
-            </div>
-        </form>
+        <h2 class="dashboard-text th">รายละเอียดการจ่ายบิล</h2>
 
+        <a class="button th head-table-btn" th:href="@{/add-resident-owner}">เพิ่มใบเสร็จ</a>
 
+        <table>
+            <thead class="th">
+				<td>วันที่</td>
+                <td>เลขห้อง</td>
+                <td>ชื่อ</td>
+                <td>นามสกุล</td>
+                <td>สถานะ</td>
+                <td>รวม</td>
+                <td>เพิ่มเติม</td>
+            </thead>
+            <form action="" method="post">
+                <tbody>
+                    <tr th:each="bill : ${bills}">
+                        <td th:text="${bill.month.pay_date}"></td>
+                        <td th:text="${bill.lease.room.room_id}"></td>
+                        <td th:text="${bill.lease.resident.first_name}"></td>
+                        <td th:text="${bill.lease.resident.last_name}"></td>
+                        <td th:text="${bill.pay_status}"></td>
+                        <td th:text="${bill.total}"></td>
+                        <td>
+                            <a class="edit-btn th" th:href="@{/}">แก้ไข</a> 
+                            <a class="delete th" th:href="@{/}">ลบ</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </form>
+        </table>
 
     </div>
 
@@ -90,4 +89,5 @@
 <footer>
 	
 </footer>
+
 </html>
