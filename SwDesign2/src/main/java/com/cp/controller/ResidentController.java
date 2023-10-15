@@ -42,6 +42,7 @@ public class ResidentController {
 	}
 	
 	@GetMapping("/add-resident")
+
 	public String getResidentList(Model model) {
 		List<Resident> residentList = residentService.getAllResident();
 		List<Amphures> amphuresList = addressService.getAllAmphuresRepository();
@@ -53,7 +54,21 @@ public class ResidentController {
 		model.addAttribute("provincesList", provincesList); 
 		return "add-resident-owner";
 	}
+	public String addResident() {
+		return "add-resident-owner";
+	}
 	
+	@GetMapping("/edit-resident")
+	public String editResident() {
+		return "edit-resident-owner";
+	}
+	
+	@GetMapping("/delete-resident")
+	public String deleteResident() {
+		//delete by id
+		return "residents-owner";
+	}
+
 	
 	
 

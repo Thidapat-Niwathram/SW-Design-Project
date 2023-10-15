@@ -12,6 +12,7 @@
 
 	<link th:href="@{/styles/css/table.css}" rel="stylesheet" />
 	<link th:href="@{/styles/css/dashboard.css}" rel="stylesheet" />
+	<link th:href="@{/styles/css/form-lr.css}" rel="stylesheet" />
 
 	<!-- font thai -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +22,7 @@
 </head>
 
 <body>
+
 	<!-- nav -->
 	<nav class="navbar navbar-light" style="background-color: #D9D9D9;">
 		<div class="container-fluid">
@@ -42,42 +44,47 @@
 	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrum">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a th:href="@{/dashboard-owner}">Admin Dashboard</a></li>
-			<li class="breadcrumb-item active th" aria-current="page">รายชื่อผู้เข้าพัก</li>
+			<li class="breadcrumb-item th"><a th:href="@{/leases}">รายละเอียดสัญญา</a></li>
+			<li class="breadcrumb-item active th" aria-current="page">แก้ไขสัญญาการเข้าพัก</li>
 		</ol>
 	</nav>
 	<!-- breadcrum -->
 
 	<div class="container">
-		<h2 class="dashboard-text th">รายละเอียดผู้เข้าพัก</h2>
+		<h2 class="dashboard-text th">แก้ไขสัญญาการเข้าพัก</h2>
+		<form action="" method="post">
+			<div class="content">
+				<div class="col right">
+					<select id="rooms" name="rooms">
+						<option value="room">room</option>
+					</select>
+					<select id="id_cards" name="id_cards">
+						<option value="id_card">room</option>
+					</select>
+					<input type="text" name="deposit" id="deposit" placeholder="ค่ามัดจำ">
+					<input type="text" name="discount" id="discount" placeholder="ส่วนลด">
+					<select id="lease_status" name="lease_status">
+						<option value="on">on</option>
+						<option value="off">off</option>
+					</select>
+					
+				</div>
+				<div class="col left">
+					<input type="date" name="start_date_lease" id="start_date_lease" placeholder="วันที่เริ่มสัญญา">
+					<input type="date" name="end_date_lease" id="end_date_lease" placeholder="วันที่สิ้นสุดสัญญา">
+					<select id="pet" name="pet">
+						<option value="y">มี</option>
+						<option value="n">ไม่มี</option>
+					</select>
+					<input type="number" name="member" id="member" placeholder="จำนวนผู้เข้าพัก">
+				</div>
+			</div>
+			<div class="col">
+				<button class="button" type="submit">แก้ไขสัญญา</button>
+			</div>
+		</form>
 
-		<a class="button th head-table-btn" th:href="@{/add-resident}">เพิ่มผู้เข้าพัก</a>
-		<table>
-			<thead class="th">
-				<td>เลขห้อง</td>
-				<td>ชื่อ</td>
-				<td>นามสกุล</td>
-				<td>เลขบัตร</td>
-				<td>เบอร์โทร</td>
-				<td>ที่อยู่</td>
-				<td>เพิ่มเติม</td>
-			</thead>
-			<form action="" method="post">
-				<tbody>
-					<tr th:each="res : ${lease}">
-						<td th:text="${res.room.room_id}"></td>
-						<td th:text="${res.resident.first_name}"></td>
-						<td th:text="${res.resident.last_name}"></td>
-						<td th:text="${res.resident.id_card}"></td>
-						<td th:text="${res.resident.phone}"></td>
-						<td></td>
-						<td>
-							<a class="edit-btn th" th:href="@{/edit-resident}">แก้ไข</a>
-							<a class="del-btn th" th:href="@{/delete-resident}">ลบ</a>
-						</td>
-					</tr>
-				</tbody>
-			</form>
-		</table>
+
 
 	</div>
 

@@ -38,17 +38,20 @@ public class BillController {
 //		return "testBill";
 //	}
 //	
-	@GetMapping("/bill")
-	public String getBillById(Model model) {
-		Bill billList = billService.getBillById(50);
-		model.addAttribute("bill", billList);     
-		return "testBill";
-	}
+	
+	
 	@RequestMapping("/bill_list_json") 
 	@ResponseBody
 	public List<Bill> getBillList(){
 		List<Bill> bill =  billService.getBillAll();
 		return bill;
+	}
+	
+	@GetMapping("/bills")
+	public String getBillAll(Model model) {
+		List<Bill> billList = billService.getBillAll();
+		model.addAttribute("bills", billList);     
+		return "bill-owner";
 	}
 	
 
