@@ -28,23 +28,15 @@ public class LeaseController {
         model.addAttribute("lease", lease);
         return "residents-owner";
 
-<<<<<<< HEAD
-	@GetMapping("/residents-owner")
-	public String showAllLease(Model model) {
-		List<Lease> lease = leaseService.getAllLeaseRepository();
-		model.addAttribute("lease", lease);
-		return "residents-owner";
-
 	}
-
 	@GetMapping("/delete_resident/{id}")
 	public String deleteResident(@PathVariable("id") Integer id, Model model) {
 		Lease lease = leaseService.getLeaseById(id);
 		leaseService.deleteLeaseById(id);
-		return "redirect:/residents-owner";
+		return "redirect:/residents";
 	}
-=======
-    }
+
+    
 	
 	@GetMapping("/leases")
 	public String showAllLease(Model model) {
@@ -55,5 +47,5 @@ public class LeaseController {
 	}
 
 	
->>>>>>> b0aa2c9d91aa771d6ee972880574514e65d41864
+
 }
