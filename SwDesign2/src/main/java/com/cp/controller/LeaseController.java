@@ -18,14 +18,7 @@ public class LeaseController {
 	public void setLeaseRepository(LeaseService leaseService) {
 		this.leaseService = leaseService;
 	}
-	
-	@GetMapping("/residents")
-    public String showAllResidents(Model model) {
-        List<Lease> lease = leaseService.getAllLease();
-        model.addAttribute("lease", lease);
-        return "residents-owner";
 
-    }
 
 	@GetMapping("/leases")
     public String showAllLease(Model model) {

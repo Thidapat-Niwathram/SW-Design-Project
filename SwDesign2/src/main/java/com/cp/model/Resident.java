@@ -1,6 +1,9 @@
 package com.cp.model;
 
 import java.util.List;
+
+import org.hibernate.annotations.UuidGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -20,7 +23,8 @@ import jakarta.persistence.Table;
 public class Resident {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@UuidGenerator
 	@Column(name="id_card")
 	private String id_card;
 	
@@ -53,6 +57,20 @@ public class Resident {
 	public Resident() {
 		super();
 	}
+	
+	public Resident(String id_card, String first_name, String last_name, String email, String phone, String address,
+			Districts districts) {
+		super();
+		this.id_card = id_card;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.districts = districts;
+	}
+
+
 
 	public Resident(String id_card, String first_name, String last_name, String email, String phone, String address,
 			Districts districts, List<Lease> lease) {

@@ -52,24 +52,28 @@
 
     <div class="container">
         <h2 class="dashboard-text th">แก้ไขข้อมูลผู้เข้าพัก</h2>
-        <form action="" method="post">
+        <form th:action="@{/edit-resident/{id}(id=${resident.id_card})}" method="post"
+         th:object="${resident}" >
             <div class="content">
                 <div class="col right">
-                    <input type="text" name="first_name" id="first_name" placeholder="ชื่อ">
-                    <input type="text" name="last_name" id="last_name" placeholder="นามสกุล">
-                    <input type="text" name="email" id="email" placeholder="อีเมล">
-                    <input type="text" name="phone" id="phone" placeholder="เบอร์โทร">
+                    <input type="text" th:field="*{first_name}" id="first_name" placeholder="ชื่อ">
+                    <input type="text" th:field="*{last_name}" id="last_name" placeholder="นามสกุล">
+                    <input type="text" th:field="*{email}" id="email" placeholder="อีเมล">
+                    <input type="text" th:field="*{phone}" id="phone" placeholder="เบอร์โทร">
                 </div>
                 <div class="col left">
-                    <input type="text" name="address" id="address" placeholder="ที่อยู่">
+                    <input type="text" th:field="*{address}" id="address" placeholder="ที่อยู่">
                     <select id="provinces" name="provinces">
-                        <option value="province1">province1</option>
+                        <option th:each="province : ${provinces}" th:value="${province.id}"
+							th:text="${province.name_th}"></option>
                     </select>
                     <select id="amphures" name="amphures">
-                        <option value="amphure1">amphure1</option>
+                        <option th:each="amphure : ${amphures}" th:value="${amphure.id}" th:text="${amphure.name_th}">
+						</option>
                     </select>
                     <select id="districts" name="districts">
-                        <option value="district1">district1</option>
+                        <option th:each="district : ${districts}" th:value="${district.id}" th:text="${district.name_th}">
+						</option>
                     </select>
                 </div>
             </div>

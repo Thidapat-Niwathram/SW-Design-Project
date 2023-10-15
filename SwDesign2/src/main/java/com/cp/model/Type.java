@@ -2,6 +2,8 @@ package com.cp.model;
 
 import java.util.List;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -19,6 +21,7 @@ import jakarta.persistence.Table;
 public class Type {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@UuidGenerator
     @Column(name="type_id")
  	private String type_id;
 	

@@ -27,7 +27,7 @@
     font-size: larger;
     text-decoration: none;
 }
-
+/*
 a.edit-btn, a.del-btn{
 	display: block;
 	background-color: #e68c3a;
@@ -37,10 +37,10 @@ a.edit-btn, a.del-btn{
     padding: 0.6em;
     border-radius: 5px;
     text-align: center;
-    width: 10%;
+    width: 40%;
 
 }
-
+*/
 .center .button:hover {
     background-color: #9d9d9d;
     color: black;
@@ -67,12 +67,3 @@ td input {
     width: 30%;
 }
 
-footer {
-	padding-top: 20%;
-	padding-bottom: 20%;
-	display: block;
-}
-
-body {
-	padding-bottom: 20%;
-}

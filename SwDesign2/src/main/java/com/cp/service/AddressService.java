@@ -32,22 +32,22 @@ public class AddressService {
 	}
 	
 	//get all
-	public List<Geographies> getAllGeographiesRepository() {
+	public List<Geographies> getAllGeographies() {
 		List<Geographies> geo = (List<Geographies>) this.geographiesRepository.findAll();
 		return geo;
 	}
 	
-	public List<Provinces> getAllProvincesRepository() {
+	public List<Provinces> getAllProvinces() {
 		List<Provinces> prov = (List<Provinces>) this.provincesRepository.findAll();
 		return prov;
 	}
 	
-	public List<Amphures> getAllAmphuresRepository() {
+	public List<Amphures> getAllAmphures() {
 		List<Amphures> amph = (List<Amphures>) this.amphuresRepository.findAll();
 		return amph;
 	}
 	
-	public List<Districts> getAllDistrictsRepository() {
+	public List<Districts> getAllDistricts() {
 		List<Districts> dist = (List<Districts>) this.districtsRepository.findAll();
 		return dist;
 	}
@@ -68,6 +68,11 @@ public class AddressService {
 	public Districts getDistrictsById(Integer id) {
 		return this.districtsRepository.findById(id).get();
 	}
+	
+//	public List<Amphures> getAmphuresByProvince(Integer province_id) {
+//        // Implement the logic to retrieve amphures based on the provinceId
+//        return amphuresRepository.findByProvinces_Id(province_id);
+//    }
 	
 	
 

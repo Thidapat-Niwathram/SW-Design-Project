@@ -54,7 +54,7 @@
 
 		<table>
 			<thead class="th">
-				<td>เลขห้อง</td>
+				<!--<td>เลขห้อง</td>-->
 				<td>ชื่อ</td>
 				<td>นามสกุล</td>
 				<td>เลขบัตร</td>
@@ -63,17 +63,20 @@
 				<td>เพิ่มเติม</td>
 			</thead>
 			<form action="" method="post">
+				<!-- th:text="${res.lease.room.room_id}"-->
 				<tbody>
-					<tr th:each="res : ${lease}">
-						<td th:text="${res.room.room_id}"></td>
-						<td th:text="${res.resident.first_name}"></td>
-						<td th:text="${res.resident.last_name}"></td>
-						<td th:text="${res.resident.id_card}"></td>
-						<td th:text="${res.resident.phone}"></td>
-						<td></td>
+					<tr th:each="res : ${residents}">
+						<!--<td th:text="${res.lease}"></td>-->
+						<td th:text="${res.first_name}"></td>
+						<td th:text="${res.last_name}"></td>
+						<td th:text="${res.id_card}"></td>
+						<td th:text="${res.phone}"></td>
+						<td th:text="${res.address}+' ตำบล '+${res.districts.name_th}+' อำเภอ '
+						+${res.districts.amphures.name_th}+' จังหวัด ' +${res.districts.amphures.provinces.name_th}+' '
+						+${res.districts.zip_code}"></td>
 						<td>
-							<a class="edit-btn th" th:href="@{/edit-resident}">แก้ไข</a>
-							<a class="del-btn th" th:href="@{/delete-resident}">ลบ</a>
+							<a class="edit-btn th" th:href="@{/edit-resident/{id}(id=${res.id_card})}">แก้ไข</a>
+							<a class="del-btn th" th:href="@{/delete-resident/{id}(id=${res.id_card})}">ลบ</a>
 						</td>
 					</tr>
 				</tbody>
@@ -87,6 +90,7 @@
 	<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
 </body>
 <footer>
-	
+
 </footer>
+
 </html>

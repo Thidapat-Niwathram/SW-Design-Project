@@ -38,4 +38,7 @@ public class ResidentService {
 		residentRepository.delete(resident);
 	}
 
+	public void saveResident(Resident r) {
+		this.residentRepository.save(r);
+	}
 }
