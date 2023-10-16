@@ -3,6 +3,7 @@ package com.cp.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails.Address;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 
 import com.cp.model.Amphures;
 import com.cp.model.Bill;
@@ -39,7 +39,10 @@ public class ResidentController {
 		this.residentService = residentService;
 		this.addressService = addressService;
 	}
-
+	@Autowired
+	public void setAddressService(AddressService addressService) {
+		this.addressService = addressService;
+	}
 	@RequestMapping("/residents_json")
 	@ResponseBody
 	public List<Resident> getResidentList() {
@@ -56,13 +59,15 @@ public class ResidentController {
 	}
 
 	@GetMapping("/add-resident")
-	public String getAddResident(Model model) {
-		List<Provinces> provinces = addressService.getAllProvinces();
-		List<Amphures> amphures = addressService.getAllAmphures();
-		List<Districts> districts = addressService.getAllDistricts();
-		model.addAttribute("provinces", provinces);
-		model.addAttribute("amphures", amphures);
-		model.addAttribute("districts", districts);
+	public String getResidentList(Model model) {
+		List<Resident> residentList = residentService.getAllResident();
+		List<Amphures> amphuresList = addressService.getAllAmphuresRepository();
+		List<Districts> districtsList = addressService.getAllDistrictsRepository();
+		List<Provinces> provincesList = addressService.getAllProvincesRepository();
+		model.addAttribute("residentList", residentList);     
+		model.addAttribute("amphuresList", amphuresList); 
+		model.addAttribute("districtsList", districtsList); 
+		model.addAttribute("provincesList", provincesList); 
 		return "add-resident-owner";
 	}
 
@@ -111,7 +116,7 @@ public class ResidentController {
 		
 		return "redirect:/residents";
 	}
-	
+
 	
 	@GetMapping("/delete-resident/{id}")
 	public String deleteResident(@PathVariable("id") String id, Model model) {

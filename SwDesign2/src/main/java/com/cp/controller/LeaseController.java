@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.cp.model.Room;
 import com.cp.model.Lease;
 import com.cp.model.Resident;
-import com.cp.model.Room;
 import com.cp.service.LeaseService;
 import com.cp.service.ResidentService;
 import com.cp.service.RoomService;
@@ -44,13 +44,22 @@ public class LeaseController {
 		this.roomService = roomService;
 	}
 
-	@GetMapping("/residents")
-	public String showAllResidents(Model model) {
-		List<Lease> lease = leaseService.getAllLease();
-		model.addAttribute("lease", lease);
-		return "residents-owner";
+	// @GetMapping("/residents")
+	// public String showAllResidents(Model model) {
+	// 	List<Lease> lease = leaseService.getAllLease();
+	// 	model.addAttribute("lease", lease);
+	// 	return "residents-owner";
 
+	// }
+	
+	@GetMapping("/delete_resident/{id}")
+	public String deleteResident(@PathVariable("id") Integer id, Model model) {
+		Lease lease = leaseService.getLeaseById(id);
+		leaseService.deleteLeaseById(id);
+		return "redirect:/residents";
 	}
+
+    
 
 	@GetMapping("/leases")
 	public String showAllLease(Model model) {
@@ -129,5 +138,7 @@ public class LeaseController {
 		leaseService.deleteLeaseById(id);
 		return "redirect:/leases";
 	}
+
+	
 
 }
