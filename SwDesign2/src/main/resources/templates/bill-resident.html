@@ -77,7 +77,7 @@
 					<td>ค่าห้อง</td>
 					<td></td>
 					<td></td>
-					<td></td>
+					<td  th:text="'ส่วนลด ' +${bill.lease.discount}"></td>
 					<td th:text="${bill.lease.room.type.price}"></td>
 				</tr>
 				<tr>

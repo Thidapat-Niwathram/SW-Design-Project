@@ -78,3 +78,10 @@ label {
 	text-indent: 5.4em;
 	margin-top: 2%;
 }
+
+.green {
+	color: limegreen;
+}
+.red {
+	color: red;
+}
