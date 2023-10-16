@@ -23,8 +23,8 @@ import jakarta.persistence.Table;
 public class Resident {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@UuidGenerator
+	//	@UuidGenerator
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_card")
 	private String id_card;
 	

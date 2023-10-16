@@ -73,7 +73,7 @@
 						<td th:text="${lease.end_date_lease}"></td>
 						<td>
 							<a class="edit-btn th" th:href="@{/edit-lease/{id}(id=${lease.lease_id})}">แก้ไข</a>
-							<a class="del-btn th" th:href="@{/delete-lease}">ลบ</a>
+							<a class="del-btn th" th:href="@{/delete-lease/{id}(id=${lease.lease_id})}">ลบ</a>
 						</td>
 					</tr>
 				</tbody>
