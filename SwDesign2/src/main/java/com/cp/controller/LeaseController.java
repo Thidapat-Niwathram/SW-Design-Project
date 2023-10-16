@@ -128,6 +128,8 @@ public class LeaseController {
 
 		Lease updateLease = leaseService.getLeaseById(id);
 
+		roomService.setStatusToOut(updateLease.getRoom().getRoom_id());
+		
 		updateLease.setRoom(lease.getRoom());
 		updateLease.setDeposit(lease.getDeposit());
 		updateLease.setDiscount(lease.getDiscount());
@@ -137,8 +139,9 @@ public class LeaseController {
 		updateLease.setMember(lease.getMember());
 		updateLease.setPet(lease.getPet());
 
+		roomService.setStatusToIn(updateLease.getRoom().getRoom_id());
 		leaseService.saveLease(updateLease);
-
+		
 		return "redirect:/leases";
 	}
 

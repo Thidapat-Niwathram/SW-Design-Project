@@ -36,4 +36,16 @@ public class RoomService {
 	public Room saveRoom(Room room) {
 		return roomRepository.save(room);
 	}
+	
+	public void setStatusToIn(String id) {
+		Room room = roomRepository.findById(id).get();
+		room.setRoom_status("in");
+		roomRepository.save(room);
+	}
+	
+	public void setStatusToOut(String id) {
+		Room room = roomRepository.findById(id).get();
+		room.setRoom_status("out");
+		roomRepository.save(room);
+	}
 }
