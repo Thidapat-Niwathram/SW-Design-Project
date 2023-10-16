@@ -63,7 +63,7 @@
 	<div class="container">
 		<h2 class="dashboard-text th">ใบเสร็จรายเดือน</h2>
 		<h3 class="th" th:text=" 'ห้อง ' + ${bill.lease.room.room_id}"></h3>
-		<h4 class="th" th:text=" 'ประจำวันที่ ' + ${bill.month.pay_date}"></h4>
+		<h4 class="th" th:text=" 'ประจำวันที่ ' + ${#dates.format(bill.month.pay_date, 'dd-MM-yyyy')}"></h4>
 		<table class="th">
 			<thead class="th">
 				<th>รายการ</th>

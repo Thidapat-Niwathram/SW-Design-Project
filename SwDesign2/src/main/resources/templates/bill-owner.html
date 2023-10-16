@@ -65,13 +65,13 @@
 			<form action="" method="post">
 				<tbody>
 					<tr th:each="bill : ${bills}">
-						<td th:text="${bill.month.pay_date}"></td>
+						<td th:text="${#dates.format(bill.month.pay_date, 'dd-MM-yyyy')}"></td>
 						<td th:text="${bill.lease.room.room_id}"></td>
 						<td th:text="${bill.lease.resident.first_name}"></td>
 						<td th:text="${bill.lease.resident.last_name}"></td>
 						<td>
 							<span class="green" th:if="${bill.pay_status.before(#dates.createNow())}">จ่ายแล้ว</span>
-							<span class="red" th:unless="${bill.pay_status.before(#dates.createNow())}">ยังไม่จ่าาย</span>
+							<span class="red" th:unless="${bill.pay_status.before(#dates.createNow())}">ยังไม่จ่าย</span>
 						</td>
 						<td th:text="${bill.total}"></td>
 						<td>

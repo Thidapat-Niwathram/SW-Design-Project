@@ -72,8 +72,9 @@
 							<span th:if="${lease.lease_status == 'on'}">มีอายุสัญญา</span>
 							<span th:if="${lease.lease_status == 'off'}">หมดอายุสัญญา</span>
 						</td>
-						<td th:text="${lease.start_date_lease}"></td>
-						<td th:text="${lease.end_date_lease}"></td>
+						<td th:text="${#dates.format(lease.start_date_lease, 'dd-MM-yyyy')}"></td>
+						<td th:text="${#dates.format(lease.end_date_lease, 'dd-MM-yyyy')}"></td>
+
 						<td>
 							<a class="edit-btn th" th:href="@{/edit-lease/{id}(id=${lease.lease_id})}">แก้ไข</a>
 							<a class="del-btn th" th:href="@{/delete-lease/{id}(id=${lease.lease_id})}">ลบ</a>
