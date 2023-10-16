@@ -61,9 +61,9 @@ public class ResidentController {
 	@GetMapping("/add-resident")
 	public String getResidentList(Model model) {
 		List<Resident> residentList = residentService.getAllResident();
-		List<Amphures> amphuresList = addressService.getAllAmphuresRepository();
-		List<Districts> districtsList = addressService.getAllDistrictsRepository();
-		List<Provinces> provincesList = addressService.getAllProvincesRepository();
+		List<Amphures> amphuresList = addressService.getAllAmphures();
+		List<Districts> districtsList = addressService.getAllDistricts();
+		List<Provinces> provincesList = addressService.getAllProvinces();
 		model.addAttribute("residentList", residentList);     
 		model.addAttribute("amphuresList", amphuresList); 
 		model.addAttribute("districtsList", districtsList); 
