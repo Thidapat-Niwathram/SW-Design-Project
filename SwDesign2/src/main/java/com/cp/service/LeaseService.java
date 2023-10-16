@@ -1,9 +1,12 @@
 package com.cp.service;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.cp.model.Bill;
 import com.cp.model.Lease;
 import com.cp.model.Resident;
 import com.cp.model.Room;
@@ -55,5 +58,17 @@ public class LeaseService {
 		this.leaseRepository.save(l);
 	}
 
+	public Bill findLatestBill(Lease lease) {
+        if (lease != null) {
+            List<Bill> bills = lease.getBill();
+            if (!bills.isEmpty()) {
+                // Use Java Stream to find the Bill with the latest pay_date
+                return bills.stream()
+                    .max(Comparator.comparing(bill -> bill.getMonth().getPay_date()))
+                    .orElse(null);
+            }
+        }
+        return null; // Or handle the case when the lease or bills don't exist
+    }
 
 }

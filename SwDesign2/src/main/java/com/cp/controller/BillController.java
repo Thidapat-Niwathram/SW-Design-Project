@@ -30,13 +30,6 @@ public class BillController {
 	public void setBillService(BillService billService) {
 		this.billService = billService;
 	}
-
-	@GetMapping("/bill")
-	public String getBillById(Model model) {
-		Bill billList = billService.getBillById(50);
-		model.addAttribute("bill", billList);     
-		return "bill-resident";
-	}
 	
 	@RequestMapping("/bill_list_json") 
 	@ResponseBody

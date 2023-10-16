@@ -53,7 +53,7 @@
     <!-- breadcrum -->
      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrum">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a th:href="@{/dashboard-resident}">Resident Dashboard</a></li>
+            <li class="breadcrumb-item"><a th:href="@{'/dashboard/' + ${lease.lease_id}}">Resident Dashboard</a></li>
             <li class="breadcrumb-item active th" aria-current="page">ใบเสร็จรายเดือน</li>
         </ol>
     </nav>
