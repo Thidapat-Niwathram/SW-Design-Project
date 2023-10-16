@@ -93,6 +93,11 @@ public class Room {
 	public void setLease(List<Lease> lease) {
 		this.lease = lease;
 	}
+	
+	public Room orElse(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 

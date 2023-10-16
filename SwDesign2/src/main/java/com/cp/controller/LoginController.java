@@ -38,15 +38,14 @@ public class LoginController {
 		    if ("on".equals(lease.getLease_status())) {
 		        if (username.equals(lease.getRoom().getRoom_id()) &&
 		            password.equals(lease.getResident().getId_card())) {
-		        	System.out.print("Login !!!"+ " " + username + " " + password);
-		        	return "redirect:dashboard-resident";
+		        	return "redirect:/dashboard-resident";
 		        }
 		    }
 		}
 		if (username.equals("root") &&
 	            password.equals("1234")) {
 	        	System.out.print("Login !!!"+ " " + username + " " + password);
-	        	return "redirect:dashboard-owner";
+	        	return "redirect:/dashboard-owner";
 	        }
 		return "redirect:";
 	}

@@ -20,8 +20,6 @@ public class RoomController {
 		this.roomService = roomService;
 	}
 
-//	
-//	@RequestMapping("/rooms")
 	@GetMapping("/rooms")
 	public String showAllRoom(Model model) {
 		List<Room> room = roomService.getAllRoomRepository();

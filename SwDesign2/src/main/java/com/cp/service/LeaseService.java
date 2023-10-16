@@ -17,40 +17,43 @@ import com.cp.repository.TypeRepository;
 public class LeaseService {
 
 	private LeaseRepository leaseRepository;
-	
+
 	@Autowired
 	public void setLeaseRepository(LeaseRepository leaseRepository) {
 		this.leaseRepository = leaseRepository;
 	}
-	
+
 	@Autowired
 	public LeaseService(LeaseRepository leaseRepository, ResidentRepository residentRepository,
 			RoomRepository roomRepository, TypeRepository typeRepository) {
 		super();
 		this.leaseRepository = leaseRepository;
 	}
-	
-	//get all
-	public List<Lease> getAllLease(){
+
+	// get all
+	public List<Lease> getAllLease() {
 		return (List<Lease>) this.leaseRepository.findAll();
 	}
-	
-	//get by id
+
+	// get by id
 	public Lease getLeaseById(Integer id) {
 		return this.leaseRepository.findById(id).get();
 	}
-	
-	//delete by id
+
+	// delete by id
 	public void deleteLeaseById(Integer id) {
 		Lease lease = this.leaseRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid Lease Id:" + id));
 		leaseRepository.delete(lease);
 	}
+
 	public void saveLeaseById(Lease l) {
 		this.leaseRepository.save(l);
 	}
+
 	public void saveLease(Lease l) {
 		this.leaseRepository.save(l);
 	}
+
 
 }

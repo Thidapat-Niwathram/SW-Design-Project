@@ -55,18 +55,19 @@
 		<form th:action="@{/edit-lease/{id}(id=${lease.lease_id})}" method="post" th:object="${lease}">
 			<div class="content">
 				<div class="col right">
-					<select id="id_cards" name="id_cards">
+					<select id="id_cards" th:field="${lease.resident.id_card}">
 						<option th:each="lease : ${lease}" th:value="${lease.resident.id_card}"
 							th:text="${lease.resident.id_card}"></option>
 					</select>
-					<select id="room_id" name="room_id">
-						<option th:each="room : ${room}" th:value="${room.room_id}" th:text="${room.room_id}"></option>
+					<select id="room_id" th:field="${lease.room.room_id}">
+						<option th:each="room : ${room}" th:value="${room.room_id}" 
+						th:text="${room.room_id}"></option>
 					</select>
-					<input th:field="*{deposit}" type="text" name="deposit" id="deposit" placeholder="ค่ามัดจำ">
-					<input th:field="*{discount}" type="text" name="discount" id="discount" placeholder="ส่วนลด">
-					<select id="lease_status" name="lease_status">
-						<option value="on">on</option>
-						<option value="off">off</option>
+					<input th:field="*{deposit}" type="text" id="deposit" placeholder="ค่ามัดจำ">
+					<input th:field="*{discount}" type="text" id="discount" placeholder="ส่วนลด">
+					<select id="lease_status" th:field="${lease.lease_status}">
+						<option th:value="on">on</option>
+						<option th:value="off">off</option>
 					</select>
 
 				</div>
@@ -76,11 +77,11 @@
 					<input th:field="*{end_date_lease}" type="date" id="end_date_lease" placeholder="วันที่หมดสัญญา"
 						th:value="${end_date_lease}">
 
-					<select id="pet" name="pet">
-						<option value="y">มี</option>
-						<option value="n">ไม่มี</option>
+					<select id="pet" th:field="${lease.pet}">
+						<option th:value="y">มี</option>
+						<option th:value="n">ไม่มี</option>
 					</select>
-					<input th:field="*{member}" type="number" name="member" id="member" placeholder="จำนวนผู้เข้าพัก">
+					<input th:field="*{member}" type="number" id="member" placeholder="จำนวนผู้เข้าพัก">
 				</div>
 			</div>
 			<div class="col">
@@ -92,9 +93,10 @@
 
 	</div>
 
-	<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+	<!--<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
 	<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
 	<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+	-->
 </body>
 <footer>
 

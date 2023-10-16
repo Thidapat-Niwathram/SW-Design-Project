@@ -36,18 +36,20 @@ public class Lease {
 
     @JsonIgnore 
     @ManyToOne
-//    (optional=false)
+    (optional=false)
     @JoinColumn(name="id_card")
     private Resident resident;
 
     @JsonIgnore 
     @ManyToOne
-//    (optional=false)
+    (optional=false)
     @JoinColumn(name="room_id")
     private Room room;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name="start_date_lease")
     private Date start_date_lease;
+    
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name="end_date_lease")
     private Date end_date_lease;
@@ -87,8 +89,6 @@ public class Lease {
 		this.lease_status = lease_status;
 	}
 
-
-	
 	public Lease(Integer lease_id, List<Bill> bill, Resident resident, Room room, Date start_date_lease,
 			Date end_date_lease, Integer deposit, Integer discount, String pet, String lease_status, Integer member) {
 		super();

@@ -39,10 +39,12 @@ public class ResidentController {
 		this.residentService = residentService;
 		this.addressService = addressService;
 	}
+
 	@Autowired
 	public void setAddressService(AddressService addressService) {
 		this.addressService = addressService;
 	}
+
 	@RequestMapping("/residents_json")
 	@ResponseBody
 	public List<Resident> getResidentList() {
@@ -60,14 +62,14 @@ public class ResidentController {
 
 	@GetMapping("/add-resident")
 	public String getResidentList(Model model) {
-//		List<Resident> residentList = residentService.getAllResident();
+		
 		List<Amphures> amphuresList = addressService.getAllAmphures();
 		List<Districts> districtsList = addressService.getAllDistricts();
 		List<Provinces> provincesList = addressService.getAllProvinces();
-//		model.addAttribute("resident", residentList);     
-		model.addAttribute("amphures", amphuresList); 
-		model.addAttribute("districts", districtsList); 
-		model.addAttribute("provinces", provincesList); 
+ 
+		model.addAttribute("amphures", amphuresList);
+		model.addAttribute("districts", districtsList);
+		model.addAttribute("provinces", provincesList);
 		return "add-resident-owner";
 	}
 
@@ -95,29 +97,28 @@ public class ResidentController {
 		model.addAttribute("resident", resident);
 		return "edit-resident-owner";
 	}
-	
+
 	@PostMapping("/edit-resident/{id}")
-	public String editResident(@PathVariable("id") String id, @Validated Resident resident, 
-			BindingResult result, Model model) {
+	public String editResident(@PathVariable("id") String id, @Validated Resident resident, BindingResult result,
+			Model model) {
 		if (result.hasErrors()) {
 			return "residents-owner";
 		}
-		
-		Resident updateResident = residentService.getResidentById(id);
-		
-		updateResident.setFirst_name(resident.getFirst_name());
-	    updateResident.setLast_name(resident.getLast_name());
-	    updateResident.setEmail(resident.getEmail());
-	    updateResident.setPhone(resident.getPhone());
-	    updateResident.setAddress(resident.getAddress());
-	    updateResident.setDistricts(resident.getDistricts());
 
-	    residentService.saveResident(updateResident);
+		Resident updateResident = residentService.getResidentById(id);
+
+		updateResident.setFirst_name(resident.getFirst_name());
+		updateResident.setLast_name(resident.getLast_name());
+		updateResident.setEmail(resident.getEmail());
+		updateResident.setPhone(resident.getPhone());
+		updateResident.setAddress(resident.getAddress());
+		updateResident.setDistricts(resident.getDistricts());
+
+		residentService.saveResident(updateResident);
 		
 		return "redirect:/residents";
 	}
 
-	
 	@GetMapping("/delete-resident/{id}")
 	public String deleteResident(@PathVariable("id") String id, Model model) {
 		residentService.deleteResidentById(id);

@@ -12,7 +12,7 @@ import com.cp.repository.ResidentRepository;
 @Service
 public class ResidentService {
 	private ResidentRepository residentRepository;
-	
+
 	@Autowired
 	public void setResidentRepository(ResidentRepository residentRepository) {
 		this.residentRepository = residentRepository;
@@ -22,23 +22,26 @@ public class ResidentService {
 		super();
 		this.residentRepository = residentRepository;
 	}
-	
-	//get All id
-	public List<Resident> getAllResident(){
+
+	// get All id
+	public List<Resident> getAllResident() {
 		return (List<Resident>) this.residentRepository.findAll();
-		}
-	//get by id
+	}
+
+	// get by id
 	public Resident getResidentById(String id) {
 		return this.residentRepository.findById(id).get();
 	}
-	//delete by id
+
+	// delete by id
 	public void deleteResidentById(String id) {
 		Resident resident = this.residentRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid Resident Id:" + id));
 		residentRepository.delete(resident);
 	}
 
-	public void saveResident(Resident r) {
-		this.residentRepository.save(r);
+	public void saveResident(Resident resident) {
+		this.residentRepository.save(resident);
 	}
+
 }

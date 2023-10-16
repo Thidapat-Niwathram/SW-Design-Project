@@ -150,4 +150,9 @@ public class Resident {
 		this.lease = lease;
 	}
 
+	public Resident orElse(Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

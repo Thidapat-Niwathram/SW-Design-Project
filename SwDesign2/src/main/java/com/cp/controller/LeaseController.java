@@ -35,8 +35,18 @@ public class LeaseController {
 	private ResidentService residentService;
 
 	@Autowired
-	public void setLeaseRepository(LeaseService leaseService) {
+	public LeaseService getLeaseService() {
+		return leaseService;
+	}
+
+	@Autowired
+	public void setLeaseService(LeaseService leaseService) {
 		this.leaseService = leaseService;
+	}
+
+	@Autowired
+	public RoomService getRoomService() {
+		return roomService;
 	}
 
 	@Autowired
@@ -44,22 +54,15 @@ public class LeaseController {
 		this.roomService = roomService;
 	}
 
-	// @GetMapping("/residents")
-	// public String showAllResidents(Model model) {
-	// 	List<Lease> lease = leaseService.getAllLease();
-	// 	model.addAttribute("lease", lease);
-	// 	return "residents-owner";
-
-	// }
-	
-	@GetMapping("/delete_resident/{id}")
-	public String deleteResident(@PathVariable("id") Integer id, Model model) {
-		Lease lease = leaseService.getLeaseById(id);
-		leaseService.deleteLeaseById(id);
-		return "redirect:/residents";
+	@Autowired
+	public ResidentService getResidentService() {
+		return residentService;
 	}
 
-    
+	@Autowired
+	public void setResidentService(ResidentService residentService) {
+		this.residentService = residentService;
+	}
 
 	@GetMapping("/leases")
 	public String showAllLease(Model model) {
@@ -79,34 +82,40 @@ public class LeaseController {
 	}
 
 	@PostMapping("/add-lease")
-	public String addLease(String id_cards, String rooms, int deposit, int discount, Date start_date_lease,
-			Date end_date_lease, String pet, int member) {
+	public String addLease(String id_cards, String rooms, int deposit, int discount, String start_date_lease,
+			String end_date_lease, String pet, int member) throws ParseException {
 		SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy-dd-MM");
 		String lease_status = "on";
-//		try {
-//			Date stdate = formatter2.parse(start_date_lease);
-//			Date edate = formatter2.parse(end_date_lease);
-		Resident resident = residentService.getResidentById(id_cards);
-		Room room = roomService.getRoomById(rooms);
-		Lease l = new Lease(resident, room, start_date_lease, end_date_lease, deposit, discount, pet, member, lease_status);
-		leaseService.saveLease(l);
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 
-		return "redirect:leases";
+		Date stdate = formatter2.parse(start_date_lease);
+		Date edate = formatter2.parse(end_date_lease);
+
+		Room room = roomService.getRoomById(rooms).orElse(null);
+		Resident resident = residentService.getResidentById(id_cards).orElse(null);
+		
+		if (room != null && resident != null) {
+			Lease newLease = new Lease();
+			newLease.setRoom(room);
+			newLease.setResident(resident);
+			newLease.setDeposit(deposit);
+			newLease.setDiscount(discount);
+			newLease.setStart_date_lease(stdate);
+			newLease.setEnd_date_lease(edate);
+			newLease.setPet(pet);
+			newLease.setMember(member);
+			newLease.setLease_status(lease_status);
+			leaseService.saveLease(newLease);
+			return "redirect:/leases";
+		}
+		return "redirect:/add-lease";
 	}
-//	 @InitBinder
-//	    public void initBinder(WebDataBinder binder) {
-//	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//	        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-//	    }
 
 	@GetMapping("/edit-lease/{id}")
 	public String editLease(@PathVariable("id") Integer id, Model model) {
 		List<Room> room = roomService.getAllRoomRepository();
 		model.addAttribute("room", room);
+		List<Resident> resident = residentService.getAllResident();
+		model.addAttribute("resident", resident);
 		Lease lease = leaseService.getLeaseById(id);
 		model.addAttribute("lease", lease);
 		return "edit-lease-owner";
@@ -114,12 +123,13 @@ public class LeaseController {
 
 	@PostMapping("/edit-lease/{id}")
 	public String editLease(@PathVariable("id") int id, @Validated Lease lease, BindingResult result, Model model) {
-		if (result.hasErrors()) {
-			return "leases-owner";
-		}
+//		if (result.hasErrors()) {
+//			return "leases-owner";
+//		}
 
 		Lease updateLease = leaseService.getLeaseById(id);
 
+		updateLease.setRoom(lease.getRoom());
 		updateLease.setDeposit(lease.getDeposit());
 		updateLease.setDiscount(lease.getDiscount());
 		updateLease.setStart_date_lease(lease.getStart_date_lease());
@@ -138,7 +148,5 @@ public class LeaseController {
 		leaseService.deleteLeaseById(id);
 		return "redirect:/leases";
 	}
-
-	
 
 }
