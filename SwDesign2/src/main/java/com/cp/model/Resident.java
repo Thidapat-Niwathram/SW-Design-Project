@@ -44,7 +44,8 @@ public class Resident {
 	private String address;
 	
 	@JsonIgnore 
-	@ManyToOne(optional=false)
+	@ManyToOne
+//	(optional=false)
 	@JoinColumn(name="districts_id")
     private Districts districts;
 	

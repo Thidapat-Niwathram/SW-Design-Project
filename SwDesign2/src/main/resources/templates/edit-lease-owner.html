@@ -52,31 +52,35 @@
 
 	<div class="container">
 		<h2 class="dashboard-text th">แก้ไขสัญญาการเข้าพัก</h2>
-		<form action="" method="post">
+		<form th:action="@{/edit-lease/{id}(id=${lease.lease_id})}" method="post" th:object="${lease}">
 			<div class="content">
 				<div class="col right">
-					<select id="rooms" name="rooms">
-						<option value="room">room</option>
-					</select>
 					<select id="id_cards" name="id_cards">
-						<option value="id_card">room</option>
+						<option th:each="lease : ${lease}" th:value="${lease.resident.id_card}"
+							th:text="${lease.resident.id_card}"></option>
 					</select>
-					<input type="text" name="deposit" id="deposit" placeholder="ค่ามัดจำ">
-					<input type="text" name="discount" id="discount" placeholder="ส่วนลด">
+					<select id="room_id" name="room_id">
+						<option th:each="room : ${room}" th:value="${room.room_id}" th:text="${room.room_id}"></option>
+					</select>
+					<input th:field="*{deposit}" type="text" name="deposit" id="deposit" placeholder="ค่ามัดจำ">
+					<input th:field="*{discount}" type="text" name="discount" id="discount" placeholder="ส่วนลด">
 					<select id="lease_status" name="lease_status">
 						<option value="on">on</option>
 						<option value="off">off</option>
 					</select>
-					
+
 				</div>
 				<div class="col left">
-					<input type="date" name="start_date_lease" id="start_date_lease" placeholder="วันที่เริ่มสัญญา">
-					<input type="date" name="end_date_lease" id="end_date_lease" placeholder="วันที่สิ้นสุดสัญญา">
+					<input th:field="*{start_date_lease}" type="date" id="start_date_lease"
+						placeholder="วันที่เริ่มสัญญา" th:value="${start_date_lease}">
+					<input th:field="*{end_date_lease}" type="date" id="end_date_lease" placeholder="วันที่หมดสัญญา"
+						th:value="${end_date_lease}">
+
 					<select id="pet" name="pet">
 						<option value="y">มี</option>
 						<option value="n">ไม่มี</option>
 					</select>
-					<input type="number" name="member" id="member" placeholder="จำนวนผู้เข้าพัก">
+					<input th:field="*{member}" type="number" name="member" id="member" placeholder="จำนวนผู้เข้าพัก">
 				</div>
 			</div>
 			<div class="col">
@@ -93,6 +97,7 @@
 	<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
 </body>
 <footer>
-	
+
 </footer>
+
 </html>
