@@ -19,5 +19,4 @@ public class PageController {
 	public String getDashboardResident() {
 		return "dashboard-resident";
 	}
-
 }

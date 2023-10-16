@@ -113,10 +113,8 @@ public class ResidentController {
 	}
 	
 	
-
 	@GetMapping("/delete-resident/{id}")
 	public String deleteResident(@PathVariable("id") String id, Model model) {
-//		Resident resident = residentService.getResidentById(id);
 		residentService.deleteResidentById(id);
 		return "redirect:/residents";
 	}
