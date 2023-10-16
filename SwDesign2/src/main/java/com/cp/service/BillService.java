@@ -19,12 +19,13 @@ import java.util.Date;
 
 @Service
 public class BillService {
+	
 	private BillRepository billRepo;
 	private MonthRepository monthRepo;
 	private UnitRepository unitRepo;
 	private LeaseRepository leaseRepository;
 
-	@Autowired
+	//constructor dependency injection
 	public BillService(BillRepository billRepo, MonthRepository monthRepo, UnitRepository unitRepo,
 			LeaseRepository leaseRepository) {
 		super();

@@ -13,7 +13,7 @@ import com.cp.repository.ResidentRepository;
 public class ResidentService {
 	private ResidentRepository residentRepository;
 
-	@Autowired
+	// constructor dependency injection
 	public void setResidentRepository(ResidentRepository residentRepository) {
 		this.residentRepository = residentRepository;
 	}
@@ -23,17 +23,14 @@ public class ResidentService {
 		this.residentRepository = residentRepository;
 	}
 
-	// get All id
 	public List<Resident> getAllResident() {
 		return (List<Resident>) this.residentRepository.findAll();
 	}
 
-	// get by id
 	public Resident getResidentById(String id) {
 		return this.residentRepository.findById(id).get();
 	}
 
-	// delete by id
 	public void deleteResidentById(String id) {
 		Resident resident = this.residentRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid Resident Id:" + id));

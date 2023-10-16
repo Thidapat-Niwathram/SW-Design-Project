@@ -10,5 +10,4 @@ import com.cp.model.Amphures;
 @Repository
 public interface AmphuresRepository extends JpaRepository<Amphures, Integer>{
 
-//	List<Amphures> findByProvinces_Id(Integer province_id);
 }

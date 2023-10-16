@@ -57,12 +57,12 @@
 				<td>สถานะ</td>
 			</thead>
 			<tbody>
-				<tr th:each="r:${room}">
-					<td th:text="${r.room_id}"></td>
-					<td th:text="${r.type.type_id}"></td>
+				<tr th:each="room:${rooms}">
+					<td th:text="${room.room_id}"></td>
+					<td th:text="${room.type.type_id}"></td>
 					<td>
-						<span class="red" th:if="${r.room_status == 'in'}">ไม่ว่าง</span>
-						<span class="green" th:if="${r.room_status == 'out'}">ว่าง</span>
+						<span class="red" th:if="${room.room_status == 'in'}">ไม่ว่าง</span>
+						<span class="green" th:if="${room.room_status == 'out'}">ว่าง</span>
 					</td>
 				</tr>
 			</tbody>

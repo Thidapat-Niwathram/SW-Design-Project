@@ -22,8 +22,8 @@ public class RoomController {
 
 	@GetMapping("/rooms")
 	public String showAllRoom(Model model) {
-		List<Room> room = roomService.getAllRoomRepository();
-		model.addAttribute("room", room);
+		List<Room> rooms = roomService.getAllRoomRepository();
+		model.addAttribute("rooms", rooms);
 		return "room-status-owner";
 
 	}
