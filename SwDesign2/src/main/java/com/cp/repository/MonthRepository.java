@@ -1,10 +1,14 @@
 package com.cp.repository;
 
-import org.springframework.data.repository.CrudRepository;
 
+import java.util.Date;
+
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.cp.model.Month;
-
-public interface MonthRepository extends CrudRepository<Month,Long>{
+@Repository
+public interface MonthRepository extends CrudRepository<Month,Date>{
 
 }
