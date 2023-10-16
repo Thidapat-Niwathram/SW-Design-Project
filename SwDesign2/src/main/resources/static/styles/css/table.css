@@ -18,8 +18,9 @@ thead {
     color: white;
 }
 
-tbody {
+tbody tr td{
     background-color:beige;
+    text-align: start;
 }
 
 td {

@@ -131,8 +131,7 @@ public class BillService {
 		this.leaseRepository = leaseRepository;
 	}
 
-	public List<Bill> getBillByLease(Lease l) {
-		Lease lease = leaseRepository.findById(l.getLease_id()).orElse(null);
+	public List<Bill> getBillByLease(Lease lease) {
         if (lease != null) {
             return lease.getBill();
         }

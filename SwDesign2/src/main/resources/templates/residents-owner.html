@@ -42,7 +42,7 @@
 	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="breadcrum">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a th:href="@{/dashboard-owner}">Admin Dashboard</a></li>
-			<li class="breadcrumb-item active th" aria-current="page">รายชื่อผู้เข้าพัก</li>
+			<li class="breadcrumb-item active th" aria-current="page">รายละเอียดผู้เข้าพัก</li>
 		</ol>
 	</nav>
 	<!-- breadcrum -->
@@ -70,8 +70,8 @@
 						<td th:text="${res.last_name}"></td>
 						<td th:text="${res.id_card}"></td>
 						<td th:text="${res.phone}"></td>
-						<td th:text="${res.address}+' ตำบล '+${res.districts.name_th}+' อำเภอ '
-						+${res.districts.amphures.name_th}+' จังหวัด ' +${res.districts.amphures.provinces.name_th}+' '
+						<td th:text="${res.address}+' ตำบล'+${res.districts.name_th}+' อำเภอ'
+						+${res.districts.amphures.name_th}+' จังหวัด' +${res.districts.amphures.provinces.name_th}+' '
 						+${res.districts.zip_code}"></td>
 						<td>
 							<a class="edit-btn th" th:href="@{/edit-resident/{id}(id=${res.id_card})}">แก้ไข</a>

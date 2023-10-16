@@ -55,32 +55,46 @@
 		<form th:action="@{/edit-lease/{id}(id=${lease.lease_id})}" method="post" th:object="${lease}">
 			<div class="content">
 				<div class="col right">
+					<label for="id_cards">เลขบัตรประจำตัวประชาชน</label>
 					<select id="id_cards" th:field="${lease.resident.id_card}">
 						<option th:each="lease : ${lease}" th:value="${lease.resident.id_card}"
 							th:text="${lease.resident.id_card}"></option>
 					</select>
+					
+					<label for="room_id">เลขห้อง</label>
 					<select id="room_id" th:field="${lease.room.room_id}">
-						<option th:each="room : ${room}" th:value="${room.room_id}" 
-						th:text="${room.room_id}"></option>
+						<option th:each="room : ${room}" th:value="${room.room_id}" th:text="${room.room_id}"></option>
 					</select>
+					
+					<label for="deposit">ค่ามัดจำ</label>
 					<input th:field="*{deposit}" type="text" id="deposit" placeholder="ค่ามัดจำ">
+					
+					<label for="discount">ส่วนลด</label>
 					<input th:field="*{discount}" type="text" id="discount" placeholder="ส่วนลด">
+					
+					<label for="lease_status">สถานะสัญญา</label>
 					<select id="lease_status" th:field="${lease.lease_status}">
-						<option th:value="on">on</option>
-						<option th:value="off">off</option>
+						<option th:value="on">มีอายุสัญญา</option>
+						<option th:value="off">หมดสัญญา</option>
 					</select>
 
 				</div>
 				<div class="col left">
+					<label for="start_date_lease">วันที่เริ่มสัญญา</label>
 					<input th:field="*{start_date_lease}" type="date" id="start_date_lease"
 						placeholder="วันที่เริ่มสัญญา" th:value="${start_date_lease}">
+						
+					<label for="end_date_lease">วันที่สิ้นสุดสัญญา</label>
 					<input th:field="*{end_date_lease}" type="date" id="end_date_lease" placeholder="วันที่หมดสัญญา"
 						th:value="${end_date_lease}">
-
+						
+					<label for="pet">สัตว์เลี้ยง</label>
 					<select id="pet" th:field="${lease.pet}">
 						<option th:value="y">มี</option>
 						<option th:value="n">ไม่มี</option>
 					</select>
+					
+					<label for="member">จำนวนผู้เข้าพัก</label>
 					<input th:field="*{member}" type="number" id="member" placeholder="จำนวนผู้เข้าพัก">
 				</div>
 			</div>

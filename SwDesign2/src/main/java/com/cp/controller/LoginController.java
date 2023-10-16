@@ -67,9 +67,9 @@ public class LoginController {
 
 	@GetMapping("/bill/{id}")
 	public String getBillUser(@PathVariable("id") Lease lease, Model model) {
-//		List<Bill> billList = billService.getBillByLease(lease);
+		List<Bill> billList = billService.getBillByLease(lease);
 		Bill lastBill = leaseService.findLatestBill(lease);
-//		model.addAttribute("billList", billList);
+		model.addAttribute("billList", billList);
 		model.addAttribute("lease", lease);
 		model.addAttribute("bill", lastBill);
 		return "bill-resident";
